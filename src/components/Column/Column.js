@@ -38,15 +38,15 @@ class Column extends React.Component {
           <span className={styles.icon}><Icon name={this.props.icon}/></span>{this.props.title}
         </h3>
         <div>
-            {this.state.cards.map(({key, ...cardProps}) => (
-              <Card key={key} {...cardProps} />
-            ))}
+          {this.state.cards.map(({key, ...cardProps}) => (
+            <Card key={key} {...cardProps} />
+          ))}
         </div>
         <div>
           <Creator text={settings.cardCreatorText} action={title => this.addCard(title)}/>
         </div>
       </section>
-    )
+    );
   }
 }
 
