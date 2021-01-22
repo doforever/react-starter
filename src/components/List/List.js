@@ -13,10 +13,10 @@ class List extends React.Component {
   }
 
   static propTypes = {
-      title: PropTypes.node.isRequired,
-      image: PropTypes.string,
-      description: PropTypes.node,
-      columns: PropTypes.array,
+    title: PropTypes.node.isRequired,
+    image: PropTypes.string,
+    description: PropTypes.node,
+    columns: PropTypes.array,
   }
 
   static defaultProps = {
@@ -42,20 +42,20 @@ class List extends React.Component {
   render() {
     return (
       <section className={styles.component}>
-          <Hero titleText={this.props.title} imgSrc={this.props.image}/>
-          <div className={styles.description}>
-              {ReactHtmlParser(this.props.description)}
-          </div>
-          <div className={styles.columns}>
-            {this.state.columns.map(({key, ...columnProps}) => (
-              <Column key={key} {...columnProps} />
-            ))}
-          </div>
-          <div className={styles.creator}>
-            <Creator text={settings.columnCreatorText} action={title => this.addColumn(title)}/>
-          </div>
+        <Hero titleText={this.props.title} imgSrc={this.props.image}/>
+        <div className={styles.description}>
+          {ReactHtmlParser(this.props.description)}
+        </div>
+        <div className={styles.columns}>
+          {this.state.columns.map(({key, ...columnProps}) => (
+            <Column key={key} {...columnProps} />
+          ))}
+        </div>
+        <div className={styles.creator}>
+          <Creator text={settings.columnCreatorText} action={title => this.addColumn(title)} warning={true}/>
+        </div>
       </section>
-    )
+    );
   }
 }
 

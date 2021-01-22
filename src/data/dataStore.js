@@ -5,6 +5,7 @@ export const settings = {
     buttonOK: 'OK',
     buttonCancel: 'Cancel',
     defaultText: 'Add new item',
+    confirmMess: 'Are you sure you want to cancel changes?'
   },
   defaultListDescription: '<p>I can do all the things!!!</p>',
   defaultColumnIcon: 'list-alt',

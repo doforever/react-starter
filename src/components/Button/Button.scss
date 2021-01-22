@@ -25,4 +25,12 @@
       background: darken($color-warning, 5%);
     }
   }
+
+  &.warning {
+    background: lighten($color-warning, 5%);
+
+    &:hover {
+      background: $color-warning;
+    }
+  }
 }
