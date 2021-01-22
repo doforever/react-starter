@@ -3,6 +3,7 @@ import styles from './App.scss';
 import List from '../List/List.js';
 import {pageContents, listData, settings} from '../../data/dataStore.js';
 import Creator from '../Creator/Creator.js';
+import Hamburger from '../Hamburger/Hamburger.js';
 
 class App extends React.Component {
   state = {
@@ -27,14 +28,16 @@ class App extends React.Component {
   render() {
     return (
       <main className={styles.component}>
-        <h1 className={styles.title}>{pageContents.title}</h1>
-        <h2 className={styles.subtitle}>{pageContents.subtitle}</h2>
-        {this.state.lists.map(({key, ...listProps}) => (
-          <List key={key} {...listProps} />
-        ))}
-        <div>
-          <Creator text={settings.listCreatorText} action={title => this.addList(title)} warning={true}/>
-        </div>
+        <Hamburger>
+          <h1 className={styles.title}>{pageContents.title}</h1>
+          <h2 className={styles.subtitle}>{pageContents.subtitle}</h2>
+          {this.state.lists.map(({key, ...listProps}) => (
+            <List key={key} {...listProps} />
+          ))}
+          <div>
+            <Creator text={settings.listCreatorText} action={title => this.addList(title)} warning={true}/>
+          </div>
+        </Hamburger>
       </main>
     );
   }

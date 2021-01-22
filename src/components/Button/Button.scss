@@ -26,11 +26,11 @@
     }
   }
 
-  &.warning {
-    background: lighten($color-warning, 5%);
+  &.transparent {
+    background: transparent;
 
     &:hover {
-      background: $color-warning;
+      background: transparentize($color: $color-light, $amount: 0.8);
     }
   }
 }

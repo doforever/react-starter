@@ -1,0 +1,19 @@
+@import '../../styles/settings.scss';
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.content {
+  height: 0;
+  overflow: hidden;
+
+  &.visible {
+    height: auto;
+  }
+}
+
+.icon {
+  font-size: $base-size * 1.7;
+}
