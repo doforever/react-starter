@@ -7,7 +7,8 @@ import Hamburger from '../Hamburger/Hamburger.js';
 
 class App extends React.Component {
   state = {
-    lists: listData ? [Object.assign({key: 0,},listData)] : [],
+    lists: listData ? [Object.assign({key: 0,
+    },listData)] : [],
   }
 
   addList(title){
@@ -18,9 +19,9 @@ class App extends React.Component {
           {
             key: state.lists.length ? state.lists[state.lists.length-1].key+1 : 0,
             title,
-            columns: []
-          }
-        ]
+            columns: [],
+          },
+        ],
       }
     ));
   }
