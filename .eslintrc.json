@@ -1,8 +1,12 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "node": true
     },
+    "plugins": [
+      "react"
+    ],
     "extends": [
       "eslint:recommended",
       "plugin:react/recommended"
@@ -42,7 +46,8 @@
     "rules": {
         "indent": [
             "error",
-            2
+            2,
+            {"SwitchCase": 1}
         ],
         "linebreak-style": [
             "off"
@@ -55,6 +60,10 @@
         "semi": [
             "error",
             "always"
+        ],
+        "comma-dangle": [
+          "error",
+          "always-multiline"
         ],
         "no-console": [
             "off"
