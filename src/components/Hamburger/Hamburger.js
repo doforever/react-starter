@@ -12,7 +12,7 @@ class Hamburger extends React.Component {
     contentVisible: false,
   }
 
-  click = () => {
+  handleClick = () => {
     this.setState({
       contentVisible: !this.state.contentVisible,
     });
@@ -22,7 +22,7 @@ class Hamburger extends React.Component {
     return (
       <div>
         <header className={styles.header}>
-          <Button onClick={this.click} variant='transparent'><i className={'fas fa-bars ' + styles.icon}></i></Button>
+          <Button onClick={this.handleClick} variant='transparent'><i className={'fas fa-bars ' + styles.icon}></i></Button>
         </header>
         <div className={styles.content + (this.state.contentVisible? styles.visible : '')}>
           {this.props.children}
