@@ -1,28 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import styles from './List.scss';
-// import Column from '../Column/ColumnContainer';
-import {settings} from '../../data/dataStore';
-import ReactHtmlParser from 'react-html-parser';
+import Card from '../Card/Card';
+import styles from './SearchResults.scss';
 
-const SearchResults = ({title}) => (
-  <section>
-    <h2>{ReactHtmlParser(title)}</h2>
-    {/* <div>
-      {(columns).map(columnData => (
-        <Column key={columnData.id} {...columnData} />
-      ))}
-    </div> */}
+const SearchResults = ({superCards}) => (
+  <section className={styles.component}>
+    {(superCards).map(cardData => (
+      <Card key={cardData.id} {...cardData} />
+    ))}
   </section>
 );
 
 SearchResults.propTypes = {
-  title: PropTypes.node.isRequired,
-  columns: PropTypes.array,
-};
-
-SearchResults.defaultProps = {
-  image: settings.list.defaultImage,
+  superCards: PropTypes.array,
 };
 
 export default SearchResults;

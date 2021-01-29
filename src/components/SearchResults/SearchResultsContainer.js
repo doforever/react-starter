@@ -1,16 +1,9 @@
-// import {connect} from 'react-redux';
-// import SearchResults from './SearchResults';
-// import {getColumnsForList, createActionAddColumn} from '../../redux/columnsRedux.js';
+import {connect} from 'react-redux';
+import SearchResults from './SearchResults';
+import {getCardsForSearchResult} from '../../redux/cardsRedux';
 
-// const mapStateToProps = (state, props) => ({
-//   columns: getColumnsForList(state, props.id),
-// });
+const mapStateToProps = (state) => ({
+  superCards: getCardsForSearchResult(state),
+});
 
-// const mapDispatchToProps = (dispatch, props) => ({
-//   addColumn: title => dispatch(createActionAddColumn({
-//     listId: props.id,
-//     title,
-//   })),
-// });
-
-// export default connect(mapStateToProps, mapDispatchToProps)(List);
+export default connect(mapStateToProps)(SearchResults);

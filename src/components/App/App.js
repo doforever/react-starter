@@ -5,7 +5,7 @@ import Creator from '../Creator/Creator.js';
 import PropTypes from 'prop-types';
 import Search from '../Search/SearchContainer';
 import {settings} from '../../data/dataStore';
-import SearchResults from '../SearchResults/SearchResults';
+import SearchResults from '../SearchResults/SearchResultsContainer';
 
 class App extends React.Component {
   static propTypes = {
@@ -21,9 +21,7 @@ class App extends React.Component {
     let content;
 
     if (searchString) {
-      content = (lists.map(listData => (
-        <SearchResults key={listData.id} {...listData} />
-      )));
+      content = <SearchResults />;
     } else {
       content = (lists.map(listData => (
         <List key={listData.id} {...listData} />
@@ -37,7 +35,7 @@ class App extends React.Component {
         <Search />
         {content}
         <div>
-          <Creator text={settings.listCreatorText} action={addList}/>
+          {!searchString && <Creator text={settings.listCreatorText} action={addList}/>}
         </div>
       </main>
     );
