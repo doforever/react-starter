@@ -6,8 +6,7 @@ import ReactHtmlParser from 'react-html-parser';
 const Card = ({title, columnTitle, listTitle}) => (
   <div className={styles.component}>
     <h4>{title}</h4>
-    {columnTitle && <h5>{columnTitle}</h5>}
-    {listTitle && <h5>{ReactHtmlParser(listTitle)}</h5>}
+    {columnTitle && <h5>{ReactHtmlParser(listTitle)} / {columnTitle}</h5>}
   </div>
 );
 
