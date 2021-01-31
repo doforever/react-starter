@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import Card from '../Card/Card';
 import styles from './SearchResults.scss';
 
-const SearchResults = ({superCards}) => (
+const SearchResults = ({cardsWithOrigin}) => (
   <section className={styles.component}>
-    {(superCards).map(cardData => (
+    {(cardsWithOrigin).map(cardData => (
       <Card key={cardData.id} {...cardData} />
     ))}
   </section>
 );
 
 SearchResults.propTypes = {
-  superCards: PropTypes.array,
+  cardsWithOrigin: PropTypes.array,
 };
 
 export default SearchResults;
