@@ -30,7 +30,7 @@
     background: transparent;
 
     &:hover {
-      background: transparentize($color: $color-light, $amount: 0.8);
+      color: darken($color-light, 20%);
     }
   }
 }

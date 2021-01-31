@@ -20,7 +20,7 @@ class Hamburger extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.component}>
         <header className={styles.header}>
           <Button onClick={this.handleClick} variant='transparent'><i className={'fas fa-bars ' + styles.icon}></i></Button>
         </header>

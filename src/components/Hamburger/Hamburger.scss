@@ -1,16 +1,19 @@
 @import '../../styles/settings.scss';
 
+.component {
+  position: relative;
+}
+
 .header {
   display: flex;
   justify-content: flex-end;
 }
 
 .content {
-  height: 0;
-  overflow: hidden;
+  display: none;
 
   &.visible {
-    height: auto;
+    display: initial;
   }
 }
 
