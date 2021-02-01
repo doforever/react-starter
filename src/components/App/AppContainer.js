@@ -1,6 +1,7 @@
 import {connect} from 'react-redux';
 import App from './App';
 import {createActionAddList, getListsForApp} from '../../redux/listsRedux';
+import {createActionPick} from '../../redux/chosenListRedux';
 
 const mapStateToProps = (state) => ({
   title: state.app.title,
@@ -14,6 +15,7 @@ const mapDispatchToProps = (dispatch, props) => ({
     listId: props.id,
     title,
   })),
+  changeChosenList: newList => dispatch(createActionPick(newList)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

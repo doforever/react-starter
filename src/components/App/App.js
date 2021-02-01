@@ -16,10 +16,16 @@ class App extends React.Component {
     lists: PropTypes.array,
     addList: PropTypes.func,
     searchString: PropTypes.string,
+    changeChosenList: PropTypes.func,
+  }
+
+  addList = (listData) =>  {
+    this.props.addList(listData);
+    this.props.changeChosenList('');
   }
 
   render() {
-    const {title, subtitle, lists, addList, searchString} = this.props;
+    const {title, subtitle, lists, searchString} = this.props;
     let content;
 
     if (searchString) {
@@ -40,7 +46,7 @@ class App extends React.Component {
         <Search />
         {content}
         <div>
-          {!searchString && <Creator text={settings.listCreatorText} action={addList}/>}
+          {!searchString && <Creator text={settings.listCreatorText} action={this.addList}/>}
         </div>
       </main>
     );
