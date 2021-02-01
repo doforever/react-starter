@@ -15,6 +15,7 @@
   display: block;
   padding: $base-size;
   width: 250px;
+  cursor: pointer;
 
   &:hover {
     background-color: lighten($color-dark, 15%);

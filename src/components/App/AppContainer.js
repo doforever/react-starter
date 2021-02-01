@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import App from './App';
-import {createActionAddList, getListsForApp} from '../../redux/listRedux';
+import {createActionAddList, getListsForApp} from '../../redux/listsRedux';
 
 const mapStateToProps = (state) => ({
   title: state.app.title,
