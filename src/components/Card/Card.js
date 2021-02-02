@@ -4,12 +4,12 @@ import styles from './Card.scss';
 import ReactHtmlParser from 'react-html-parser';
 import {Draggable} from 'react-beautiful-dnd';
 
-const Card = ({title, columnTitle, listTitle, id, index}) => {
-  if (columnTitle) {
+const Card = ({title, columnTitle, listTitle, id, index, draggable}) => {
+  if (!draggable) {
     return (
       <article className={styles.component}>
         <h4>{title}</h4>
-        <h5>{ReactHtmlParser(listTitle)} / {columnTitle}</h5>
+        {columnTitle && <h5>{ReactHtmlParser(listTitle)} / {columnTitle}</h5>}
       </article>);
   } else {
     return (
@@ -36,6 +36,11 @@ Card.propTypes = {
   listTitle: PropTypes.string,
   id: PropTypes.string,
   index: PropTypes.number,
+  draggable: PropTypes.bool,
+};
+
+Card.defaultProps = {
+  draggable: true,
 };
 
 export default Card;
