@@ -9,7 +9,6 @@ const baseConfig = () => ({
     path: path.join(__dirname, 'dist'),
     filename: 'scripts_bundle.js',
   },
-  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -29,6 +28,7 @@ const baseConfig = () => ({
 });
 
 const devConfig = () => ({
+  devtool: 'source-map',
   module: {
     rules: [
       {
