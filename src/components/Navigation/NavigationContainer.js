@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import Navigation from './Navigation';
-import {getChosenListId, createActionChooseList} from '../../redux/chosenListRedux';
+import {getChosenListId, createActionChooseList, createActionClearChoice} from '../../redux/chosenListRedux';
 import {getListsForNavigation} from '../../redux/listsRedux';
 
 const mapStateToProps = (state) => ({
@@ -10,6 +10,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   changeChosenList: listId => dispatch(createActionChooseList(listId)),
+  clearChosenList: () => dispatch(createActionClearChoice()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navigation);
