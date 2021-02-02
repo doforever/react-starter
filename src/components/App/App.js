@@ -17,13 +17,13 @@ class App extends React.Component {
     lists: PropTypes.array,
     addList: PropTypes.func,
     searchString: PropTypes.string,
-    changeChosenList: PropTypes.func,
+    clearChosenList: PropTypes.func,
     moveCard: PropTypes.func,
   }
 
   addList = (listData) =>  {
     this.props.addList(listData);
-    this.props.changeChosenList('');
+    this.props.clearChosenList();
   }
 
   render() {

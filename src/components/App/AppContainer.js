@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import App from './App';
 import {createActionAddList, getListsForApp} from '../../redux/listsRedux';
-import {createActionChooseList} from '../../redux/chosenListRedux';
+import {createActionClearChoice} from '../../redux/chosenListRedux';
 import {createAction_moveCard} from '../../redux/cardsRedux';
 
 const mapStateToProps = (state) => ({
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, props) => ({
     listId: props.id,
     title,
   })),
-  changeChosenList: listId => dispatch(createActionChooseList(listId)),
+  clearChosenList: listId => dispatch(createActionClearChoice(listId)),
   moveCard: payload => dispatch(createAction_moveCard(payload)),
 });
 
