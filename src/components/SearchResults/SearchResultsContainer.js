@@ -3,7 +3,7 @@ import SearchResults from './SearchResults';
 import {getCardsForSearchResult} from '../../redux/cardsRedux';
 
 const mapStateToProps = (state) => ({
-  cardsWithOrigin: getCardsForSearchResult(state),
+  cards: getCardsForSearchResult(state),
 });
 
 export default connect(mapStateToProps)(SearchResults);

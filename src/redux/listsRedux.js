@@ -2,6 +2,7 @@ import shortid from 'shortid';
 
 // selectors
 export const getListsForApp = ({lists, chosenList}) => lists.filter(list => (list.id == chosenList) || !chosenList);
+export const getListsForNavigation = ({lists}) => lists.map(list => ({id: list.id, title: list.title}));
 
 // action name creator
 const reducerName = 'lists';

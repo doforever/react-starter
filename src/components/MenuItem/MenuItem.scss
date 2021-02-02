@@ -1,0 +1,17 @@
+@import '../../styles/settings.scss';
+
+.component {
+  display: block;
+  padding: $base-size;
+  width: 250px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($color-dark, 15%);
+    border-radius: $radius;
+  }
+}
+
+.active {
+  font-weight: bold;
+}

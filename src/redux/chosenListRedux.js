@@ -6,16 +6,15 @@ const reducerName = 'chosenList';
 const createActionName = name => `app/${reducerName}/${name}`;
 
 // actions types
-export const PICK = createActionName('PICK');
-export const CLEAR = createActionName('CLEAR');
+export const CHOOSE_LIST = createActionName('CHOOSE_LIST');
 
 // action creators
-export const createActionPick = payload => ({payload, type: PICK });
+export const createActionChooseList = payload => ({payload, type: CHOOSE_LIST });
 
 // reducer
 export default function reducer(statePart = '', action = {}) {
   switch (action.type) {
-    case PICK:
+    case CHOOSE_LIST:
       return action.payload;
     default:
       return statePart;

@@ -1,14 +1,19 @@
 import React from 'react';
 import styles from './Navigation.scss';
 import PropTypes from 'prop-types';
-import ReactHtmlParser from 'react-html-parser';
+import MenuItem from '../MenuItem/MenuItem';
 
 const Navigation = ({lists, changeChosenList, chosenListId}) => (
   <nav className={styles.component}>
     {(lists.map(listData => (
-      <a key={listData.id} className={styles.link + (listData.id == chosenListId ? ` ${styles.active}` : '')} onClick={() => changeChosenList(listData.id)}>{ReactHtmlParser(listData.title)}</a>
+      <MenuItem
+        key={listData.id}
+        id={listData.id}
+        text={listData.title}
+        active={chosenListId === listData.id}
+        action={changeChosenList}/>
     )))}
-    <a className={styles.link + (!chosenListId ? ` ${styles.active}` : '')} onClick={() => changeChosenList('')}>All</a>
+    <MenuItem id='' text='All' active={!chosenListId} action={changeChosenList}/>
   </nav>
 );
 
