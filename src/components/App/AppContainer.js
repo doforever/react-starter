@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import App from './App';
 import {createActionAddList, getListsForApp} from '../../redux/listsRedux';
 import {createActionPick} from '../../redux/chosenListRedux';
+import {createAction_moveCard} from '../../redux/cardsRedux';
 
 const mapStateToProps = (state) => ({
   title: state.app.title,
@@ -16,6 +17,7 @@ const mapDispatchToProps = (dispatch, props) => ({
     title,
   })),
   changeChosenList: newList => dispatch(createActionPick(newList)),
+  moveCard: payload => createAction_moveCard(payload),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

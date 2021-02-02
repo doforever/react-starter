@@ -8,6 +8,7 @@ import {settings} from '../../data/dataStore';
 import SearchResults from '../SearchResults/SearchResultsContainer';
 import Hamburger from '../Hamburger/Hamburger';
 import Navigation from '../Navigation/NavigationContainer';
+import {DragDropContext} from 'react-beautiful-dnd';
 
 class App extends React.Component {
   static propTypes = {
@@ -17,6 +18,7 @@ class App extends React.Component {
     addList: PropTypes.func,
     searchString: PropTypes.string,
     changeChosenList: PropTypes.func,
+    moveCard: PropTypes.func,
   }
 
   addList = (listData) =>  {
@@ -25,15 +27,42 @@ class App extends React.Component {
   }
 
   render() {
-    const {title, subtitle, lists, searchString} = this.props;
+    const {title, subtitle, lists, searchString, moveCard} = this.props;
     let content;
+
+    const moveCardHandler = result => {
+      if(
+        result.destination
+        &&
+        (
+          result.destination.index != result.source.index
+          ||
+          result.destination.droppableId != result.source.droppableId
+        )
+      ){
+        moveCard({
+          id: result.draggableId,
+          dest: {
+            index: result.destination.index,
+            columnId: result.destination.droppableId,
+          },
+          src: {
+            index: result.source.index,
+            columnId: result.source.droppableId,
+          },
+        });
+      }
+    };
 
     if (searchString) {
       content = <SearchResults />;
     } else {
-      content = (lists.map(listData => (
-        <List key={listData.id} {...listData} />
-      )));
+      content =
+      <DragDropContext onDragEnd={moveCardHandler}>
+        {lists.map(listData => (
+          <List key={listData.id} {...listData} />
+        ))}
+      </DragDropContext>;
     }
 
     return (
