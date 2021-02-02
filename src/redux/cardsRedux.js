@@ -27,6 +27,7 @@ export const createAction_moveCard = payload => ({ payload, type: MOVE_CARD});
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
+  console.log(action.type);
   switch (action.type) {
     case ADD_CARD:
       return [...statePart, action.payload];

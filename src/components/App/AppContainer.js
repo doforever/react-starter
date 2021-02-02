@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch, props) => ({
     title,
   })),
   changeChosenList: newList => dispatch(createActionPick(newList)),
-  moveCard: payload => createAction_moveCard(payload),
+  moveCard: payload => dispatch(createAction_moveCard(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
