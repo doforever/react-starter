@@ -27,7 +27,6 @@ export const createAction_moveCard = payload => ({ payload, type: MOVE_CARD});
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
-  console.log(action.type);
   switch (action.type) {
     case ADD_CARD:
       return [...statePart, action.payload];
@@ -40,6 +39,7 @@ export default function reducer(statePart = [], action = {}) {
       if(dest.columnId == src.columnId){
         targetColumnCards.splice(src.index, 1);
         targetColumnCards.splice(dest.index, 0, targetCard);
+
         return statePart.map(card => {
           const targetColumnIndex = targetColumnCards.indexOf(card);
 
@@ -56,11 +56,6 @@ export default function reducer(statePart = [], action = {}) {
         sourceColumnCards.splice(src.index, 1);
         // add card to targetColumn
         targetColumnCards.splice(dest.index, 0, targetCard);
-
-        console.log('sourceColumnCards:');
-        console.log(sourceColumnCards.map(card => `${card.index}, title: ${card.title}`));
-        console.log('targetColumnCards:');
-        console.log(targetColumnCards.map(card => `${card.index}, title: ${card.title}`));
 
         return statePart.map(card => {
           const targetColumnIndex = targetColumnCards.indexOf(card);
