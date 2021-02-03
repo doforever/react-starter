@@ -14,7 +14,6 @@ class Search extends React.Component {
     countVisible: PropTypes.number,
     countAll: PropTypes.number,
     history: PropTypes.object,
-    searchStrFromPath: PropTypes.string,
   }
 
   static defaultProps = {
@@ -23,6 +22,18 @@ class Search extends React.Component {
 
   state = {
     value: this.props.searchString,
+  }
+
+  componentDidMount() {
+    if (this.props.history.location.pathname.startsWith('/search/')) {
+      if (!this.state.value) {
+        const searchStrFromPath = this.props.history.location.pathname.replace('/search/', '');
+        this.setState({
+          value: searchStrFromPath,
+          visibleButtons: searchStrFromPath.length > 0,
+        });
+      }
+    }
   }
 
   handleChange(event){
@@ -57,9 +68,9 @@ class Search extends React.Component {
         <div className={styles.buttons}>
           <Button onClick={() => this.handleOK()}><Icon name={icon} /></Button>
         </div>
-        <div className={styles.count}>
-          { countVisible == countAll ? '' : `${countVisible} / ${countAll}` }
-        </div>
+        {countVisible !== countAll && (<div className={styles.count}>
+          {`${countVisible} / ${countAll}` }
+        </div>)}
       </div>
     );
   }
