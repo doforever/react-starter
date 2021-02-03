@@ -10,3 +10,14 @@
   display: flex;
   justify-content: space-between;
 }
+
+.origin {
+  text-decoration: none;
+  color: $color-dark;
+  font-size: $base-size;
+  font-weight: bold;
+
+  &:hover {
+    color: $color-success;
+  }
+}

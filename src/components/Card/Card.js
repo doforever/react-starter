@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import styles from './Card.scss';
 import ReactHtmlParser from 'react-html-parser';
 import {Draggable} from 'react-beautiful-dnd';
+import {Link} from 'react-router-dom';
 
-const Card = ({title, columnTitle, listTitle, id, index, draggable}) => {
+const Card = ({title, columnTitle, listTitle, listId, id, index, draggable}) => {
+  const origin = <Link className={styles.origin} to={'/list/' + listId}>{ReactHtmlParser(listTitle)} / {columnTitle}</Link>;
+
   if (!draggable) {
     return (
       <article className={styles.component}>
         <h4>{title}</h4>
-        {columnTitle && <h5>{ReactHtmlParser(listTitle)} / {columnTitle}</h5>}
+        {columnTitle && listTitle && listId && origin}
       </article>);
   } else {
     return (
@@ -22,7 +25,7 @@ const Card = ({title, columnTitle, listTitle, id, index, draggable}) => {
             ref={provided.innerRef}
           >
             <h4>{title}</h4>
-            {columnTitle && <h5>{ReactHtmlParser(listTitle)} / {columnTitle}</h5>}
+            {columnTitle && listTitle && listId && origin}
           </article>
         )}
       </Draggable>

@@ -7,47 +7,55 @@ import Icon from '../Icon/Icon.js';
 import {settings} from '../../data/dataStore';
 import {Droppable} from 'react-beautiful-dnd';
 
-const Column = ({title, icon, cards, addCard, id}) => {
-  const sortedCards = cards.sort((a, b) => a.index - b.index);
+class Column extends React.Component {
+  static propTypes = {
+    title: PropTypes.node.isRequired,
+    icon: PropTypes.node,
+    cards: PropTypes.array,
+    addCard: PropTypes.func,
+    id: PropTypes.string,
+  };
 
-  return (
-    <section className={styles.component}>
-      <h3 className={styles.title}>
-        <span className={styles.icon}><Icon name={icon}/></span>{title}
-      </h3>
-      <div>
-        <Droppable droppableId={id}>
-          {provided => (
-            <div
-              className={styles.cards}
-              {...provided.droppableProps}
-              ref={provided.innerRef}
-            >
-              {sortedCards.map(cardData => (
-                <Card key={cardData.id} {...cardData} />
-              ))}
+  static defaultProps = {
+    icon: settings.defaultColumnIcon,
+  };
 
-              {provided.placeholder}
-            </div>
-          )}
-        </Droppable>
-      </div>
-      <div>
-        <Creator text={settings.cardCreatorText} action={addCard}/>
-      </div>
-    </section>);
-};
+  createCard = (title) => {
+    this.props.addCard(title, this.props.cards.length);
+  }
 
-Column.propTypes = {
-  title: PropTypes.node.isRequired,
-  icon: PropTypes.node,
-  cards: PropTypes.array,
-  addCard: PropTypes.func,
-  id: PropTypes.string,
-};
+  render() {
+    const {title, icon, cards, id} = this.props;
+    const sortedCards = cards.sort((a, b) => a.index - b.index);
 
-Column.defaultProps = {
-  icon: settings.defaultColumnIcon,
-};
+    return (
+      <section className={styles.component}>
+        <h3 className={styles.title}>
+          <span className={styles.icon}><Icon name={icon}/></span>{title}
+        </h3>
+        <div>
+          <Droppable droppableId={id}>
+            {provided => (
+              <div
+                className={styles.cards}
+                {...provided.droppableProps}
+                ref={provided.innerRef}
+              >
+                {sortedCards.map(cardData => (
+                  <Card key={cardData.id} {...cardData} />
+                ))}
+
+                {provided.placeholder}
+              </div>
+            )}
+          </Droppable>
+        </div>
+        <div>
+          <Creator text={settings.cardCreatorText} action={this.createCard}/>
+        </div>
+      </section>
+    );
+  }
+}
 
 export default Column;
