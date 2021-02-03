@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
-import App from './App';
-import {createActionAddList, getListsForApp} from '../../redux/listsRedux';
+import Home from './Home';
+import {createActionAddList, getListsForHome} from '../../redux/listsRedux';
 import {createActionClearChoice} from '../../redux/chosenListRedux';
 import {createAction_moveCard} from '../../redux/cardsRedux';
 
 const mapStateToProps = (state) => ({
   title: state.app.title,
   subtitle: state.app.subtitle,
-  lists: getListsForApp(state),
+  lists: getListsForHome(state),
   searchString: state.searchString,
 });
 
@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch, props) => ({
   moveCard: payload => dispatch(createAction_moveCard(payload)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
